@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flask Codemirror Merge Demo</title>
+
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.61.0/addon/merge/merge.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js"></script>
+
+    {{ codemirror.include_codemirror() }}
+
+</head>
+
+<body>
+    <h1>Flask Codemirror Merge Demo</h1>
+
+    <div id=view></div>
+    <script>
+        var panes = 2;
+        var highlight = true;
+        var value = 'Hallo VeloV\nLine two\nHallo Velo';
+        var orig1 = 'Hallo Velo1\nLine two\nHallo 1elo';
+        var orig2 = 'Hallo Velo3\nLine two\nLine three\nLine four\nHallo Velo';
+        var target = document.getElementById("view");
+        dv = CodeMirror.MergeView(target, {
+            value: value,
+            origLeft: panes == 3 ? orig1 : null,
+            orig: orig2,
+            lineNumbers: true,
+            mode: "text/html",
+            highlightDifferences: highlight,
+            connect: null, // "align",
+            revertButtons: true,
+            collapseIdentical: false,
+            allowEditingOriginals: false,
+        });
+      </script>
+
+      <p onclick="alert(`hallo: ${dv.editor().getValue()}`)">Show</p>
+</body>
+
+</html>

@@ -48,7 +48,7 @@ app.config["CODEMIRROR_THEME"] = ''
 # '3024-day' average
 
 app.config["CODEMIRROR_ADDONS"] = (
-    # ('merge', 'merge'),
+    ('merge', 'merge'),
     # ('fold', 'foldcode'),
     # ('fold', 'foldgutter'),
     # ('fold', 'indent-fold'),
@@ -59,11 +59,6 @@ codemirror = CodeMirror(app)
 
 CODEMIRROR_CONFIG = {
     'lineNumbers': 'true',
-    # 'foldGutter': 'true',
-    # 'gutters': ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-    # 'gutters': "[CodeMirror-linenumbersCodeMirror-foldgutter]",
-    'origLeft': 'Muh',
-    'origRight': 'Muh',
 }
 
 class MyForm(FlaskForm):
@@ -97,3 +92,7 @@ def index():
     else:
         form.source_code.data = SAMPLE_TEXT
     return render_template('index.html', form=form)
+
+@app.route('/merge')
+def merge():
+    return render_template('merge.html')
