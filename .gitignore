@@ -1,6 +1,7 @@
-*.pyc
+*/__pycache__
 docs/_build/*
 venv/*
 dist/*
 build/*
 flask_codemirror.egg-info/*
+.vscode/.ropeproject
